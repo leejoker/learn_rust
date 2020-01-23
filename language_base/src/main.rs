@@ -98,6 +98,31 @@ fn main() {
         200
     };
     println!("Value of x is : {}", x);
+
+    //loop
+    let mut counter = 0;
+    let result = loop {
+        counter += 1;
+        if counter == 10 {
+            break counter;
+        }
+    };
+    println!("loop result value: {}", result);
+    //while
+    counter = 0;
+    while counter < 10 {
+        counter += 1;
+    }
+    println!("while result value: {}", result);
+
+    //for
+    let a = [10, 20, 30, 40, 50];
+    for element in a.iter() {
+        println!("element value is : {}", element);
+    }
+    for element in (1..10).rev() {
+        println!("element value is : {}", element);
+    }
 }
 
 fn another_function() {
