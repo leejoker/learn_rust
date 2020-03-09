@@ -9,32 +9,32 @@ fn main() {
     let d = c;
 
     //类型为&str，是不可变引用，会被直接保存在文件中
-    println!("{}",c);
-    println!("{}",d);
+    println!("{}", c);
+    println!("{}", d);
 
     //本质是vector，执行时才在堆上分配
     let e = String::from("bbb");
     let f = e;
 
     //println!("{}",e);      会报错，所有权转移，e被抛弃
-    println!("{}",f);
+    println!("{}", f);
 
     //深度拷贝
     let e = String::from("bbb");
     let f = e.clone();
-    println!("{}",f);
+    println!("{}", f);
 
     //在函数中使用后也会发生所有权转移
     make_owner_change(f);
     //println!("{}",f);      这里也会报错
     let g = make_owner_change(e);
-    println!("{}",g);
+    println!("{}", g);
     //println!("{}",e);      e的所有权已经转移
 
     //可以通过传递引用的方式避免所有权转移
     let h = String::from("ccc");
     let j = use_reference(&h);
-    println!("h: {}, j: {}",h,j);
+    println!("h: {}, j: {}", h, j);
 
     //可变引用
     let mut k = String::from("hello");

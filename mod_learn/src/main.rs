@@ -34,6 +34,6 @@ fn main() {
     crate::sound::call_in_father();
 
     let mut v = plant::Vegetable::new("squash");
-    v.name = String::from("butternet squash");
+    v.name = String::from("butternut squash");
     println!("{} are delicious", v.name);
 }
