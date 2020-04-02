@@ -76,7 +76,8 @@ pub fn generate_workout(intensity: u32, random_number: u32) {
 fn call_with_different_values() {
     let mut c = Cacher::new(|a| a);
 
-    let v1 = c.value(1);
+    //一旦被赋值后无法改变
+    //let v1 = c.value(1);
     let v2 = c.value(2);
 
     assert_eq!(v2, 2);
@@ -95,7 +96,42 @@ fn equal_with_values() {
 fn equal_with_move() {
     let x = vec![1, 2, 3];
     let equal_to_x = move |z| z == x;
-    println!("try to use x here {:?}", x);
+    //move转移了所有权，x无法再被使用
+    //println!("try to use x here {:?}", x);
     let y = vec![1, 2, 3];
     assert!(equal_to_x(y));
+}
+
+pub struct Count {
+    value: i32,
+}
+
+impl Count {
+    pub fn new() -> Count {
+        Count { value: 0 }
+    }
+}
+
+impl Iterator for Count {
+    type Item = i32;
+
+    fn next(&mut self) -> Option<Self::Item> {
+        self.value += 1;
+        if self.value < 6 {
+            Some(self.value)
+        } else {
+            None
+        }
+    }
+}
+
+#[test]
+fn calling_next_directly() {
+    let mut counter = Count::new();
+    assert_eq!(counter.next(), Some(1));
+    assert_eq!(counter.next(), Some(2));
+    assert_eq!(counter.next(), Some(3));
+    assert_eq!(counter.next(), Some(4));
+    assert_eq!(counter.next(), Some(5));
+    assert_eq!(counter.next(), None);
 }

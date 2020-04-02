@@ -13,4 +13,14 @@ fn main() {
     for val in v1_iter {
         println!("Got: {}", val);
     }
+
+    let sum: i32 = v1.iter().sum();
+    println!("sum is {}", sum);
+
+    let mut count = closures_learn::Count::new();
+    let value = match count.next() {
+        Some(v) => v,
+        None => -1,
+    };
+    println!("next count is {}", value);
 }
