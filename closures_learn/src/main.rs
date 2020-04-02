@@ -13,7 +13,4 @@ fn main() {
     for val in v1_iter {
         println!("Got: {}", val);
     }
-
-    //TODO 实现链表完成迭代器实现部分
-    //TODO 完成minigrep项目通过迭代器进行性能优化
 }
