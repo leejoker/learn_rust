@@ -23,6 +23,7 @@ pub fn thread_demo() {
 
     let v = vec![1, 2, 3];
 
+    //使用move进行主线程和子线程的参数传递，转移所有权
     let handle = thread::spawn(move || {
         println!("Here's a vector: {:?}", v);
     });
