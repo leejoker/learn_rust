@@ -1,8 +1,6 @@
 mod unsafes;
+mod consts;
 
 fn main() {
-    unsafes::deref_value();
-    unsafe {
-        unsafes::dangerous();
-    }
+    unsafes::unsafe_tests();
 }
